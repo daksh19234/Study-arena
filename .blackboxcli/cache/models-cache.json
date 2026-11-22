@@ -1,0 +1,70 @@
+{
+  "models": [
+    {
+      "id": "blackboxai/anthropic/claude-sonnet-4.5",
+      "name": "Claude Sonnet 4.5",
+      "description": "Anthropic Claude Sonnet 4.5 model"
+    },
+    {
+      "id": "blackboxai/anthropic/claude-opus-4.5",
+      "name": "Claude Opus 4.5",
+      "description": "Anthropic Claude Opus 4.5 model"
+    },
+    {
+      "id": "blackboxai/anthropic/claude-sonnet-4",
+      "name": "Claude Sonnet 4",
+      "description": "Anthropic Claude Sonnet 4 model"
+    },
+    {
+      "id": "blackboxai/minimax/minimax-m2.1",
+      "name": "Minimax M2.1",
+      "description": "Minimax M2.1 model"
+    },
+    {
+      "id": "blackboxai/anthropic/claude-opus-4",
+      "name": "Claude Opus 4",
+      "description": "Anthropic Claude Opus 4 model"
+    },
+    {
+      "id": "blackboxai/anthropic/claude-3.7-sonnet:thinking",
+      "name": "Claude 3.7 Sonnet (Thinking)",
+      "description": "Anthropic Claude 3.7 Sonnet with extended thinking"
+    },
+    {
+      "id": "blackboxai/anthropic/claude-haiku-4.5",
+      "name": "Claude Haiku 4.5",
+      "description": "Anthropic Claude Haiku 4.5 model"
+    },
+    {
+      "id": "blackboxai/anthropic/claude-3.5-sonnet",
+      "name": "Claude 3.5 Sonnet",
+      "description": "Anthropic Claude 3.5 Sonnet model"
+    },
+    {
+      "id": "blackboxai/encrypted",
+      "name": "Blackbox Encrypted",
+      "description": "BlackboxAI encrypted model"
+    },
+    {
+      "id": "blackboxai/google/gemini-2.5-flash",
+      "name": "Gemini 2.5 Flash",
+      "description": "Google Gemini 2.5 Flash model"
+    },
+    {
+      "id": "blackboxai/meta-llama/llama-3.3-70b-instruct",
+      "name": "Llama 3.3 70B",
+      "description": "Meta Llama 3.3 70B Instruct model"
+    },
+    {
+      "id": "blackboxai/openai/gpt-4o",
+      "name": "GPT-4o",
+      "description": "OpenAI GPT-4o model"
+    },
+    {
+      "id": "blackboxai/x-ai/grok-code-fast-1:free",
+      "name": "Grok Code Fast (Free)",
+      "description": "Fast coding model optimized for quick responses"
+    }
+  ],
+  "timestamp": 1793023440669
+}

@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#080b18" />
+  <meta name="description" content="Study Arena — a live study companion with goals, progress, streaks and a public friends leaderboard." />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="icon" href="/icons/icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+  <title>Study Arena — Your goals. Your arena.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+  <div class="shell">
+    <aside class="sidebar">
+      <a class="brand" href="#overview" aria-label="Study Arena home"><span class="brand-mark">✦</span><span>STUDY<span class="brand-light">ARENA</span></span></a>
+      <div class="sidebar-label">WORKSPACE</div>
+      <nav class="side-nav" aria-label="Main navigation">
+        <button class="nav-item active" data-page="overview"><span class="nav-ico">◫</span> Overview</button>
+        <button class="nav-item" data-page="progress"><span class="nav-ico">◷</span> My progress</button>
+        <button class="nav-item" data-page="leaderboard"><span class="nav-ico">♛</span> Leaderboard <span class="live-dot"></span></button>
+        <button class="nav-item" data-page="activity"><span class="nav-ico">▤</span> Study history</button>
+      </nav>
+      <div class="sidebar-spacer"></div>
+      <div class="arena-card">
+        <div class="arena-orbit">✦</div>
+        <div class="tiny-label">THE ARENA RULE</div>
+        <strong>Show up. Stack XP.<br>Level up together.</strong>
+        <p>Small daily wins build big results.</p>
+      </div>
+      <div class="sidebar-foot"><span class="status-pip"></span><span id="connectionLabel">Checking connection…</span></div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="mobile-brand"><span class="brand-mark">✦</span> STUDY<span class="brand-light">ARENA</span></div>
+        <div class="crumb"><span>Workspace</span><b>/</b><strong id="crumbCurrent">Overview</strong></div>
+        <div class="top-actions"><span class="public-pill"><span class="live-dot"></span> PUBLIC ARENA</span><button id="installBtn" class="icon-btn install-btn" hidden title="Install app">⇩ <span>Install</span></button><button id="shareBtn" class="share-btn">↗ <span>Invite friends</span></button><button id="profileChip" class="profile-chip"><span id="avatarInitial">S</span><span id="headerUsername">Student</span><span class="chevron">⌄</span></button></div>
+      </header>
+
+      <section id="page-overview" class="page active">
+        <div class="hero-row">
+          <div class="hero-copy"><div class="eyebrow"><span class="eyebrow-star">✦</span> YOUR STUDY JOURNEY, LEVELLED UP</div><h1>Your goals.<br><span>Your arena.</span></h1><p>Build consistency, earn XP, and climb the leaderboard with your friends. Every focused minute moves you forward.</p><div class="hero-actions"><button class="primary-btn" id="logNowBtn">＋ Log a study session</button><button class="ghost-btn" data-goto="leaderboard">View leaderboard <span>↗</span></button></div></div>
+          <div class="hero-visual"><div class="hero-ring ring-one"></div><div class="hero-ring ring-two"></div><div class="hero-core"><span>✦</span><small>FOCUS</small><b>MODE</b></div><div class="float-tag tag-top"><span class="tag-icon">↗</span><span><b>Keep showing up</b><small>Consistency wins</small></span></div><div class="float-tag tag-bottom"><span class="tag-icon purple">⚡</span><span><b>Earn your XP</b><small>One session at a time</small></span></div></div>
+        </div>
+
+        <div class="section-head"><div><div class="eyebrow">YOUR PERFORMANCE</div><h2>Today's overview</h2></div><div class="date-chip" id="todayLabel">TODAY</div></div>
+        <div class="stats-grid">
+          <article class="stat-card stat-highlight"><div class="stat-top"><span>DAILY FOCUS</span><span class="stat-icon">◷</span></div><div class="stat-value"><strong id="todayHours">0.0</strong><small>/ 4 hrs</small></div><div class="meter"><span id="todayMeter" style="width:0%"></span></div><div class="stat-foot"><span id="todayRemaining">4 hours to go</span><b id="todayPercent">0%</b></div></article>
+          <article class="stat-card"><div class="stat-top"><span>TOTAL XP</span><span class="stat-icon violet">✦</span></div><div class="stat-value"><strong id="totalXP">0</strong><small>XP</small></div><div class="stat-foot"><span class="muted">Your effort, added up</span><b class="positive">↗</b></div></article>
+          <article class="stat-card"><div class="stat-top"><span>STUDY STREAK</span><span class="stat-icon orange">♨</span></div><div class="stat-value"><strong id="streak">0</strong><small>days</small></div><div class="stat-foot"><span class="muted">Keep the chain alive</span><b class="orange-text">✦</b></div></article>
+          <article class="stat-card"><div class="stat-top"><span>CHAPTERS DONE</span><span class="stat-icon green">✓</span></div><div class="stat-value"><strong id="chaptersDone">0</strong><small>chapters</small></div><div class="stat-foot"><span class="muted">Across all subjects</span><b class="positive">↗</b></div></article>
+        </div>
+
+        <div class="content-grid">
+          <section class="panel mission-panel"><div class="panel-head"><div><div class="eyebrow">YOUR DAILY MISSION</div><h3>Make today count</h3></div><span class="pill pill-cyan">4 HOUR TARGET</span></div><div class="mission-body"><div class="progress-ring" id="dailyRing"><div class="ring-inner"><strong id="ringPercent">0%</strong><small>COMPLETE</small></div></div><div class="mission-info"><strong id="missionHeadline">Your next win is waiting.</strong><p id="missionSub">Log your study time and move closer to today's 4-hour goal.</p><div class="mini-progress"><div><span>Session 1</span><b id="sessionOneStatus">0 / 2 hrs</b></div><div class="mini-track"><span id="sessionOneMeter" style="width:0%"></span></div><div><span>Session 2</span><b id="sessionTwoStatus">0 / 2 hrs</b></div><div class="mini-track"><span id="sessionTwoMeter" style="width:0%"></span></div></div></div></div><button class="panel-action" id="missionLogBtn">Update today's progress <span>→</span></button></section>
+          <section class="panel weekly-panel"><div class="panel-head"><div><div class="eyebrow">CONSISTENCY CHECK</div><h3>This week</h3></div><span class="week-total" id="weekTotal">0h <small>/ 28h</small></span></div><div class="week-chart" id="weekChart"><div class="chart-empty">Your weekly chart appears after you log study time.</div></div><div class="chart-legend"><span><i></i> Study hours</span><span id="weekTargetText">0% of weekly goal</span></div></section>
+        </div>
+
+        <div class="section-head subject-head"><div><div class="eyebrow">SIX SUBJECTS. ONE PLAN.</div><h2>Subject progress</h2></div><button class="text-btn" data-goto="progress">View all progress →</button></div>
+        <div class="subject-grid" id="subjectCards"></div>
+      </section>
+
+      <section id="page-progress" class="page">
+        <div class="page-title"><div class="eyebrow">YOUR PERSONAL ANALYTICS</div><h1>My progress<span>.</span></h1><p>See your momentum across subjects, study hours, and completed chapters.</p></div>
+        <div class="stats-grid compact-stats"><article class="stat-card"><div class="stat-top"><span>TOTAL STUDY TIME</span><span class="stat-icon">◷</span></div><div class="stat-value"><strong id="progressTotalHours">0.0</strong><small>hrs</small></div><div class="stat-foot"><span class="muted">All recorded sessions</span></div></article><article class="stat-card"><div class="stat-top"><span>WEEKLY FOCUS</span><span class="stat-icon violet">✦</span></div><div class="stat-value"><strong id="progressWeekHours">0.0</strong><small>/ 28 hrs</small></div><div class="stat-foot"><span class="muted">Monday to Sunday</span></div></article><article class="stat-card"><div class="stat-top"><span>SESSIONS</span><span class="stat-icon green">▣</span></div><div class="stat-value"><strong id="progressSessions">0</strong><small>logged</small></div><div class="stat-foot"><span class="muted">Focused study blocks</span></div></article><article class="stat-card"><div class="stat-top"><span>STUDY DAYS</span><span class="stat-icon orange">♨</span></div><div class="stat-value"><strong id="progressDays">0</strong><small>days</small></div><div class="stat-foot"><span class="muted">Days you showed up</span></div></article></div>
+        <section class="panel"><div class="panel-head"><div><div class="eyebrow">CHAPTER TRACKER</div><h3>Your syllabus checklist</h3></div><span class="pill pill-cyan" id="syllabusCount">0 / 0 DONE</span></div><div id="syllabusList" class="syllabus-list"></div></section>
+      </section>
+
+      <section id="page-leaderboard" class="page">
+        <div class="leader-hero"><div><div class="eyebrow"><span class="eyebrow-star">✦</span> THE ARENA NEVER SLEEPS</div><h1>Climb the<br><span>leaderboard.</span></h1><p>Every study session earns XP. Challenge your friends, celebrate their wins, and keep each other consistent.</p></div><div class="leader-trophy">♛<small>TOP<br>FOCUS</small></div></div>
+        <div class="leader-toolbar"><div><span class="live-pulse"></span><b>GLOBAL ARENA</b><small>Public leaderboard · Live updates</small></div><button class="ghost-btn" id="refreshBoardBtn">↻ Refresh</button></div>
+        <div id="leaderboardList" class="leaderboard-list"><div class="empty-state"><div class="empty-icon">♛</div><b>Loading the arena…</b><p>Your leaderboard will appear here.</p></div></div>
+        <div class="privacy-note"><span>◈</span><p><b>Public profile reminder</b><br>Only your username and study statistics appear here. Use a nickname—not your full name, school, phone number, or location.</p></div>
+      </section>
+
+      <section id="page-activity" class="page">
+        <div class="page-title"><div class="eyebrow">YOUR RECENT MOMENTUM</div><h1>Study history<span>.</span></h1><p>Your logged sessions, in one place.</p></div>
+        <section class="panel"><div class="panel-head"><div><div class="eyebrow">SESSION LOG</div><h3>Recent activity</h3></div><button class="text-btn" id="exportBtn">Export my data ↓</button></div><div id="activityList" class="activity-list"><div class="empty-state"><div class="empty-icon">◷</div><b>No sessions yet</b><p>Log your first session to start your history.</p></div></div></section>
+      </section>
+
+      <footer class="footer"><span>✦ STUDY ARENA</span><span>Built for consistency, not comparison.</span><span id="syncFoot">Local preview mode</span></footer>
+    </main>
+  </div>
+
+  <nav class="mobile-nav"><button class="active" data-page="overview">◫<small>Home</small></button><button data-page="progress">◷<small>Progress</small></button><button data-page="leaderboard">♛<small>Ranks</small></button><button data-page="activity">▤<small>History</small></button></nav>
+
+  <div class="modal-backdrop" id="profileModal"><div class="modal"><button class="modal-close" data-close="profileModal">×</button><div class="modal-kicker">WELCOME TO YOUR ARENA</div><div class="modal-symbol">✦</div><h2>Claim your handle.</h2><p>Choose a nickname your friends can recognize. Your profile and study stats will be public on the leaderboard.</p><label for="usernameInput">YOUR USERNAME</label><div class="username-field"><span>@</span><input id="usernameInput" maxlength="18" placeholder="focusmaster" autocomplete="nickname"></div><small class="field-help">3–18 characters · letters, numbers, and underscores only</small><div class="privacy-mini">◈ Don't use your real full name, school, phone number, or location.</div><button class="primary-btn full-btn" id="claimUsernameBtn">Enter the arena <span>→</span></button><div id="profileError" class="form-error"></div></div></div>
+
+  <div class="modal-backdrop" id="logModal"><div class="modal wide-modal"><button class="modal-close" data-close="logModal">×</button><div class="modal-kicker">DAILY MISSION · 4 HOURS</div><h2>Log your focus.</h2><p>Record real study time. Your XP and daily progress update automatically.</p><div class="form-grid"><div><label for="logDate">DATE</label><input id="logDate" type="date"></div><div><label for="logSubject">SUBJECT</label><select id="logSubject"><option>Mathematics</option><option>Science</option><option>Social Science</option><option>Hindi</option><option>English</option><option>Sanskrit</option></select></div><div><label for="logSession">SESSION</label><select id="logSession"><option value="1">Session 1 · first 2 hours</option><option value="2">Session 2 · next 2 hours</option></select></div><div><label for="logMinutes">STUDY TIME (MINUTES)</label><input id="logMinutes" type="number" min="5" max="240" step="5" placeholder="Example: 90"></div><div class="full-field"><label for="logTopic">CHAPTER / TOPIC</label><input id="logTopic" maxlength="90" placeholder="What did you study?"></div><div><label for="logTasks">PRACTICE TASKS COMPLETED</label><input id="logTasks" type="number" min="0" max="30" value="0"></div><div><label for="logChapters">CHAPTERS COMPLETED</label><input id="logChapters" type="number" min="0" max="10" value="0"></div></div><div class="log-hint">⚡ XP = 1 point per 15 study minutes + 5 XP per practice task + 20 XP per completed chapter.</div><button class="primary-btn full-btn" id="saveLogBtn">Save study session <span>→</span></button><div id="logError" class="form-error"></div></div></div>
+
+  <div class="toast" id="toast" role="status"></div>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

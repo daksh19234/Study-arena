@@ -1,0 +1,44 @@
+{
+	"motd": {
+		"cloudBuildErrorAfter": 1594252800000,
+		"cloudBuildWarnAfter": 1590019200000,
+		"defaultNode10After": 1594252800000,
+		"minVersion": "3.0.5",
+		"node8DeploysDisabledAfter": 1613390400000,
+		"node8RuntimeDisabledAfter": 1615809600000,
+		"node8WarnAfter": 1600128000000,
+		"fetched": 1795073158479
+	},
+	"gemini": true,
+	"usage": true,
+	"analytics-uuid": "b64dee9c-5894-4ac1-90cf-97655d5ad921",
+	"user": {
+		"iss": "accounts.google.com",
+		"azp": "563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com",
+		"aud": "563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com",
+		"sub": "107201807899966184841",
+		"email": "kunalthakur7523@gmail.com",
+		"email_verified": true,
+		"at_hash": "YaGHQ-k5N3fvN77nDt6lwQ",
+		"iat": 1795073258,
+		"exp": 1795076858
+	},
+	"tokens": {
+		"expires_at": 1795076856831,
+		"access_token": "ya29.a0AehfTOkP58oLzQyl6mEeyXTzGYZFXU-IoGOL7RP3kIupvXi6IxyqLCRYMY4i-SbtnY_qnwS3WuSOE51KoTZl9f4cz5drq0AzU15ZR_ODgpeJBqd9BbDhq4O4nFCmaUkF8bv5ltjEXZPcAh-BcRNSUMkH2jj-mQDd1ZMuNdRNXNjE4hRjRIKjxwhuxIj3cw-g8ytd9H0KhVuZaCgYKAaQSARISFQHGX2MinlFw6IbkejVQLa0wFpNEPA0211",
+		"expires_in": 3599,
+		"refresh_token": "1//0gCNFYtGbnIe7CgYIARAAGBASSQF-L9IrGp1NAR6lH4nreXOr0F01-ToXGZB_ZmxWPtpL6LjmF6Pomjgkh4BKi3j-78yEUrtLadO9mS7wlddnqZKh9tuyuPEaVwY",
+		"scope": "https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/cloud-platform openid",
+		"token_type": "Bearer",
+		"id_token": "eyJhbGciOiJSUzI1NiIsImtpZCI6Ijk0M2EzYTVkN2Q5MTk2MjVhNDU0ZTQ4OWI3NWMyOWFkYWI1N2FjYmEiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiYXpwIjoiNTYzNTg0MzM1ODY5LWZncmhnbWQ0N2JxbmVraWo1aThiNXByMDNobzg0OWU2LmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiYXVkIjoiNTYzNTg0MzM1ODY5LWZncmhnbWQ0N2JxbmVraWo1aThiNXByMDNobzg0OWU2LmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTA3MjAxODA3ODk5OTY2MTg0ODQxIiwiZW1haWwiOiJrdW5hbHRoYWt1cjc1MjNAZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImF0X2hhc2giOiJZYUdIUS1rNU4zZnZONzduRHQ2bHdRIiwiaWF0IjoxNzk1MDczMjU4LCJleHAiOjE3OTUwNzY4NTh9.hiWxSQa4DNOtmPbGkXWsvgCRCaqfbGk8z42WsnxMq6vrbKYOCOaMilE6LqPfwIfPzlMj2Ii0N_k7CLmFSRHb2z1FHwIK849wRiKoLS8h6KSSs2rHfMF7ytebUfmklmrmVyIcc47rNlqIDL2l3W4Qtr1l7SU5mO53JqWiczC7FNBGWtuK1ddCaatgxb-DEPcLoH3U9girIqWJmFihTKju_-rtaxYeMe_TW6_d0yyvJaZPqcgTf6E7KtYJkJGiS3lfybRXfZjfGogvZEV9qVD0QXHvEF4wpU9cN5ADqcB_C1SnKPJVh8gc-TGjbkNoT-ZBtgJdfm5QfrzjLBop6EXZBw"
+	},
+	"activeProjects": {
+		"/public/study-arena-pwa/study-arena-pwa": "default"
+	},
+	"apiEnablementCache": {
+		"study-arena-598f5": {
+			"firestore.googleapis.com": true,
+			"firebasehosting.googleapis.com": true
+		}
+	}
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "role": "user",
+    "parts": [
+      {
+        "text": "This is the Blackbox Code. We are setting up the context for our chat.\nToday's date is Monday, October 26, 2026 (formatted according to the user's locale).\nMy operating system is: linux\nPROJECT ROOT DIRECTORY (Use this for all absolute paths): /public/Customtv\nHere is the folder structure of the current working directories:\n\nShowing up to 20 items (files + folders).\n\n/public/Customtv/\n└───-w\nIMPORTANT: All file paths you use MUST be relative to the PROJECT ROOT DIRECTORY or absolute paths starting with it. NEVER hallucinate paths from other environments."
+      }
+    ]
+  },
+  {
+    "role": "model",
+    "parts": [
+      {
+        "text": "Got it. Thanks for the context!"
+      }
+    ]
+  },
+  {
+    "role": "user",
+    "parts": [
+      {
+        "text": "hi"
+      }
+    ]
+  }
+]

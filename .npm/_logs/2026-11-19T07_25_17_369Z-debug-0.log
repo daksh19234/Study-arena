@@ -1,0 +1,17 @@
+0 verbose cli /usr/bin/node /usr/lib/node_modules/npm/bin/npm-cli.js
+1 info using npm@10.9.1
+2 info using node@v22.23.4
+3 silly config load:file:/usr/lib/node_modules/npm/npmrc
+4 silly config load:file:/public/.npmrc
+5 silly config load:file:/etc/npmrc
+6 verbose title npm run verify-build
+7 verbose argv "run" "verify-build"
+8 verbose logfile logs-max:10 dir:/public/.npm/_logs/2026-11-19T07_25_17_369Z-
+9 verbose logfile /public/.npm/_logs/2026-11-19T07_25_17_369Z-debug-0.log
+10 silly logfile done cleaning log files
+11 verbose cwd /usr/local/lib/node_modules/firebase-tools/node_modules/re2
+12 verbose os Linux 5.15.197-android13-8-00005-g2d8ad9139b89-ab15063902
+13 verbose node v22.23.4
+14 verbose npm  v10.9.1
+15 verbose exit 0
+16 info ok

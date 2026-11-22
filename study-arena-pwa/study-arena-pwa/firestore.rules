@@ -1,0 +1,94 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() { return request.auth != null; }
+    function owns(uid) { return signedIn() && request.auth.uid == uid; }
+    function validUsername(name) {
+      return name is string && name.matches('^[a-z0-9_]{3,18}$');
+    }
+    function validProfile(data) {
+      return data.keys().hasOnly([
+        'uid','username','displayName','totalMinutes','totalPoints','streak',
+        'studyDays','chaptersCompleted','sessionsCompleted','weeklyMinutes',
+        'weekStart','lastStudyDate','completedChapterIds','createdAt','updatedAt'
+      ])
+      && data.uid is string
+      && validUsername(data.username)
+      && data.displayName == data.username
+      && data.totalMinutes is int && data.totalMinutes >= 0 && data.totalMinutes <= 200000
+      && data.totalPoints is int && data.totalPoints >= 0 && data.totalPoints <= 10000000
+      && data.streak is int && data.streak >= 0 && data.streak <= 10000
+      && data.studyDays is int && data.studyDays >= 0 && data.studyDays <= 10000
+      && data.chaptersCompleted is int && data.chaptersCompleted >= 0 && data.chaptersCompleted <= 1000
+      && data.sessionsCompleted is int && data.sessionsCompleted >= 0 && data.sessionsCompleted <= 100000
+      && data.weeklyMinutes is int && data.weeklyMinutes >= 0 && data.weeklyMinutes <= 10080
+      && data.weekStart is string
+      && data.lastStudyDate is string
+      && data.completedChapterIds is list && data.completedChapterIds.size() <= 100
+      && data.createdAt is timestamp && data.updatedAt is timestamp;
+    }
+    function validSession(session) {
+      return session is map
+        && session.keys().hasOnly(['subject','topic','minutes','tasks','chapters','points'])
+        && session.subject is string && session.subject in ['Mathematics','Science','Social Science','Hindi','English','Sanskrit']
+        && session.topic is string && session.topic.size() <= 90
+        && session.minutes is int && session.minutes >= 5 && session.minutes <= 240
+        && session.tasks is int && session.tasks >= 0 && session.tasks <= 30
+        && session.chapters is int && session.chapters >= 0 && session.chapters <= 10
+        && session.points is int && session.points >= 0 && session.points <= 1000;
+    }
+
+    // Public aggregate profiles power the live public leaderboard.
+    match /profiles/{uid} {
+      allow read: if true;
+      allow create: if owns(uid) && request.resource.data.uid == uid && validProfile(request.resource.data);
+      allow update: if owns(uid)
+        && request.resource.data.uid == resource.data.uid
+        && request.resource.data.username == resource.data.username
+        && request.resource.data.createdAt == resource.data.createdAt
+        && validProfile(request.resource.data);
+      allow delete: if false;
+    }
+
+    // Username registry prevents accidental duplicate handles. Handles are permanent in this starter build.
+    match /usernames/{username} {
+      allow read: if true;
+      allow create: if signedIn()
+        && validUsername(username)
+        && request.resource.data.keys().hasOnly(['uid','username','createdAt'])
+        && request.resource.data.uid == request.auth.uid
+        && request.resource.data.username == username
+        && request.resource.data.createdAt is timestamp
+        && !exists(/databases/$(database)/documents/usernames/$(username));
+      allow update, delete: if false;
+    }
+
+    // Detailed daily logs are private to the owner. Only aggregate profile stats are public.
+    match /dailyLogs/{logId} {
+  allow get: if signedIn() &&
+    (!exists(/databases/$(database)/documents/dailyLogs/$(logId))
+    || resource.data.uid == request.auth.uid);
+
+  allow list: if signedIn() &&
+    resource.data.uid == request.auth.uid;
+      allow create, update: if signedIn()
+        && request.resource.data.uid == request.auth.uid
+        && request.resource.data.keys().hasOnly([
+          'uid','username','date','session1','session2','totalMinutes','totalPoints',
+          'tasksCompleted','chaptersCompleted','sessionsCompleted','updatedAt'
+        ])
+        && request.resource.data.username is string
+        && request.resource.data.date is string
+        && request.resource.data.totalMinutes is int
+        && request.resource.data.totalMinutes >= 0 && request.resource.data.totalMinutes <= 480
+        && request.resource.data.totalPoints is int
+        && request.resource.data.tasksCompleted is int
+        && request.resource.data.chaptersCompleted is int
+        && request.resource.data.sessionsCompleted is int
+        && request.resource.data.updatedAt is timestamp
+        && (!('session1' in request.resource.data) || validSession(request.resource.data.session1))
+        && (!('session2' in request.resource.data) || validSession(request.resource.data.session2));
+      allow delete: if signedIn() && resource.data.uid == request.auth.uid;
+    }
+  }
+}
